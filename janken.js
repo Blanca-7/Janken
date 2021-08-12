@@ -11,10 +11,16 @@ function computerPlay() {
 }
 
 // 1 round of 'static' Janken, user has fixed value of "rock"
-const playerSelection = "rock";
+var playerSelection;
 const computerSelection = computerPlay();
 
 function playRound(playerSelection, computerSelection) {
+  playerSelection = prompt(
+    "Type either: Rock, Paper and Scissors"
+  ).toLowerCase(); // Prompt for user input and converts it to lower-case
+  var firstLetter = playerSelection[0].toUpperCase(); // Upper-case first letter
+  var finalString = firstLetter + playerSelection.slice(1); // Slicing back rest of string
+  playerSelection = finalString; // Assining new casing of string back to original variable
   console.log(`User: ${playerSelection}`);
   console.log(`Cpu:  ${computerSelection}`);
   if (playerSelection == computerSelection) {
