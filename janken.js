@@ -10,13 +10,14 @@ function computerPlay() {
   }
 }
 
-// // 1 round of 'static' Janken, user has fixed value of "rock"
-var playerSelection = prompt(
-  "Type either: Rock, Paper and Scissors"
-).toLowerCase(); // Prompt for user input and convert it to lowerCase
-const computerSelection = computerPlay();
+// // 5 rounds of Janken
+var playerSelection; // Prompt for user input and convert it to lowerCase
+var computerSelection = computerPlay();
 
 function playRound(playerSelection, computerSelection) {
+  playerSelection = prompt(
+    "Type either: Rock, Paper and Scissors" // ask for user input
+  ).toLowerCase(); //convert input to all lowerCase
   var firstLetter = playerSelection[0].toUpperCase(); // toUpperCase first letter only
   playerSelection = firstLetter + playerSelection.slice(1); // Slicing back rest of string
   console.log(`User: ${playerSelection}`);
@@ -44,4 +45,8 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+console.log(playRound(playerSelection, computerSelection));
+console.log(playRound(playerSelection, computerSelection));
+console.log(playRound(playerSelection, computerSelection));
+console.log(playRound(playerSelection, computerSelection));
 console.log(playRound(playerSelection, computerSelection));
