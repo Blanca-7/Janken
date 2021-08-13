@@ -24,6 +24,24 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     return "\n It's a tie!";
   }
+  if (playerSelection == "Rock" && computerSelection == "Scissors") {
+    return `You won! ${playerSelection} beats ${computerSelection}`;
+  }
+  if (playerSelection == "Rock" && computerSelection == "Paper") {
+    return `You lost! ${computerSelection} beats ${playerSelection}`;
+  }
+  if (playerSelection == "Scissors" && computerSelection == "Paper") {
+    return `You won! ${playerSelection} beats ${computerSelection}`;
+  }
+  if (playerSelection == "Scissors" && computerSelection == "Rock") {
+    return `You lost! ${computerSelection} beats ${playerSelection}`;
+  }
+  if (playerSelection == "Paper" && computerSelection == "Rock") {
+    return `You won! ${playerSelection} beats ${computerSelection}`;
+  }
+  if (playerSelection == "Paper" && computerSelection == "Scissors") {
+    return `You lost! ${computerSelection} beats ${playerSelection}`;
+  }
 }
 
 console.log(playRound(playerSelection, computerSelection));
