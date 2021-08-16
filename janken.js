@@ -10,12 +10,6 @@ function computerPlay() {
   }
 }
 
-//ignore
-// if (playerSelection !== Rock || Raper || Scissors) {
-//     return;
-//   }
-//ignore
-
 // declaring variables for function below
 let playerSelection;
 let computerSelection;
