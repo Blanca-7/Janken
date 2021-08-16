@@ -49,31 +49,20 @@ function game() {
     if (playerSelection == computerSelection) {
       return `\n It's a tie!
     it stands: ${playerScore} to ${cpuScore}`;
-    }
-    if (playerSelection == "Rock" && computerSelection == "Scissors") {
+    } else if (
+      (playerSelection == "Rock" && computerSelection == "Scissors") ||
+      (playerSelection == "Scissors" && computerSelection == "Paper") ||
+      (playerSelection == "Paper" && computerSelection == "Rock")
+    ) {
       return `You won! ${playerSelection} beats ${computerSelection}
     Score:  ${++playerScore} to ${cpuScore}`;
-    }
-    if (playerSelection == "Rock" && computerSelection == "Paper") {
+    } else if (
+      (playerSelection == "Rock" && computerSelection == "Paper") ||
+      (playerSelection == "Scissors" && computerSelection == "Rock") ||
+      (playerSelection == "Paper" && computerSelection == "Scissors")
+    )
       return `You lost! ${computerSelection} beats ${playerSelection}
     Score:  ${playerScore} to ${++cpuScore}`;
-    }
-    if (playerSelection == "Scissors" && computerSelection == "Paper") {
-      return `You won! ${playerSelection} beats ${computerSelection}
-    Score:  ${++playerScore} to ${cpuScore}`;
-    }
-    if (playerSelection == "Scissors" && computerSelection == "Rock") {
-      return `You lost! ${computerSelection} beats ${playerSelection}
-    Score:  ${playerScore} to ${++cpuScore}`;
-    }
-    if (playerSelection == "Paper" && computerSelection == "Rock") {
-      return `You won! ${playerSelection} beats ${computerSelection}
-    Score:  ${++playerScore} to ${cpuScore}`;
-    }
-    if (playerSelection == "Paper" && computerSelection == "Scissors") {
-      return `You lost! ${computerSelection} beats ${playerSelection}
-    Score:  ${playerScore} to ${++cpuScore}`;
-    }
   }
 }
 
