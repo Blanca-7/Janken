@@ -11,52 +11,60 @@ function computerPlay() {
 }
 
 // declaring variables for function below
-let playerSelection;
-let computerSelection;
-let playerScore = 0;
-let cpuScore = 0;
+var playerSelection;
+var computerSelection;
+var playerScore = 0;
+var cpuScore = 0;
+var scoreValuePlayer = 0;
+var scoreValueCpu = 0;
 
+game();
+
+// game() function asks and converts user-input and invokes playRound()
 function game() {
-  if (playerScore >= 3 || cpuScore >= 3) {
-    console.log(`Game finished! You won!`);
-    return;
-  }
-
-  console.log(playRound(playerSelection, computerSelection));
-  console.log(playRound(playerSelection, computerSelection));
-  console.log(playRound(playerSelection, computerSelection));
-  console.log(playRound(playerSelection, computerSelection));
-  console.log(playRound(playerSelection, computerSelection));
-}
-//single round of Janken
-function playRound(playerSelection, computerSelection) {
   computerSelection = computerPlay();
   playerSelection = prompt(
-    "Type either: Rock, Paper and Scissors" // Prompt for user input
-  ).toLowerCase(); // and convert it to lowerCase
-
+    "Type either: Rock, Paper or Scissors" // Prompt for user input
+  ).toLowerCase();
   var firstLetter = playerSelection[0].toUpperCase(); // toUpperCase first letter only
   playerSelection = firstLetter + playerSelection.slice(1); // Slicing back rest of string
+  console.log(playRound(playerSelection, computerSelection)); //calls playRound() with assigned parameters
+}
+
+// scoreCounter
+function gameTracker() {
+  if (scoreValuePlayer >= 4 || scoreValueCpu >= 4) {
+    console.log("Game Finished!");
+  } else {
+    game();
+  }
+}
+
+//single round of Janken
+function playRound(playerSelection, computerSelection) {
   console.log(`User: ${playerSelection}`);
   console.log(`Cpu:  ${computerSelection}`);
 
   if (playerSelection == computerSelection) {
-    return `\n It's a tie!
-    it stands: ${playerScore} to ${cpuScore}`;
+    scoreValuePlayer = playerScore;
+    scoreValueCpu = cpuScore;
+    console.log(`\n It's a tie! Score: ${playerScore} to ${cpuScore}`);
   } else if (
     (playerSelection == "Rock" && computerSelection == "Scissors") ||
     (playerSelection == "Scissors" && computerSelection == "Paper") ||
     (playerSelection == "Paper" && computerSelection == "Rock")
   ) {
-    return `You won! ${playerSelection} beats ${computerSelection}
-    Score:  ${++playerScore} to ${cpuScore}`;
+    scoreValuePlayer += ++playerScore;
+    console.log(`You won! ${playerSelection} beats ${computerSelection}
+    Score:  ${playerScore} to ${cpuScore}`);
   } else if (
     (playerSelection == "Rock" && computerSelection == "Paper") ||
     (playerSelection == "Scissors" && computerSelection == "Rock") ||
     (playerSelection == "Paper" && computerSelection == "Scissors")
-  )
-    return `You lost! ${computerSelection} beats ${playerSelection}
-    Score:  ${playerScore} to ${++cpuScore}`;
+  ) {
+    scoreValueCpu += ++cpuScore;
+    console.log(`You lost! ${computerSelection} beats ${playerSelection}
+    Score:  ${playerScore} to ${cpuScore}`);
+  }
+  gameTracker();
 }
-
-game();
