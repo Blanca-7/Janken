@@ -86,7 +86,7 @@ scissorsBtn.addEventListener("click", (scissors) => {
   playRound("Scissors", computerPlay());
 });
 
-const container = document.createElement("div");
+const container = document.querySelector(".gameResult");
 document.body.appendChild(container);
 
 const result = document.createElement("p");
